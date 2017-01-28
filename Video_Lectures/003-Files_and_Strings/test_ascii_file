@@ -1,0 +1,4 @@
+This is a regular, old ASCII text file.
+As you can see it doesn't have an extension.
+That's ok python doesn't care. It reads the file regardless.
+If you'd like to learn more about opening files, see the official docs.

@@ -1,0 +1,16 @@
+# More about opening files
+https://docs.python.org/2/library/functions.html#open
+
+# Working with Environments in Anaconda
+https://conda.io/docs/using/envs.html#create-a-separate-environment
+https://conda.io/docs/using/envs.html#change-environments-activate-deactivate
+
+# Sample CSVs
+https://support.spatialkey.com/spatialkey-sample-csv-data/
+
+# Learn about bits, bytes, ascii, and unicode
+# YOU SHOULD READ THIS
+https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/
+
+# diff between python 2 and 3
+http://lucumr.pocoo.org/2014/1/5/unicode-in-2-and-3/
