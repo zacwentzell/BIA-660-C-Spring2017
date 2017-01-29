@@ -68,6 +68,13 @@ class DataFrame(object):
         elif isinstance(item, list):
             return [[row[column_name] for column_name in item] for row in self.data]
 
+    def get_rows_where_column_has_value(self, column_name, value, index_only=False):
+        if index_only:
+            return [index for index, row_value in enumerate(self[column_name]) if row_value==value]
+        else:
+            return [row for row in self.data if row[column_name]==value]
+
+
 
 
 infile = open('SalesJan2009.csv')
@@ -106,4 +113,9 @@ named_rows_and_multi_columns = df[:5, ['column4', 'column7']]
 
 #testing from_csv class method
 df = DataFrame.from_csv('SalesJan2009.csv')
+rows = df.get_rows_where_column_has_value('Payment_Type', 'Visa')
+indices = df.get_rows_where_column_has_value('Payment_Type', 'Visa', index_only=True)
+
+rows_way2 = df[indices, ['Product', 'Country']]
+
 2+2
