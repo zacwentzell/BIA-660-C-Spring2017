@@ -22,7 +22,7 @@ class DataFrame(object):
             self.header = list_of_lists[0]
             self.data = list_of_lists[1:]
         else:
-            self.header = ['column' + str(index + 1) for index, column in enumerate(data[0])]
+            self.header = ['column' + str(index + 1) for index, column in enumerate(self.data[0])]
             self.data = list_of_lists
 
         self.data = [OrderedDict(zip(self.header, row)) for row in self.data]
