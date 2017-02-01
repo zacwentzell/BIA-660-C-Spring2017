@@ -1,0 +1,10 @@
+[Unit]
+Description=uWSGI instance to serve myproject
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu
+Environment="PATH=/home/ubuntu/anaconda2/envs/chatbot/bin"
+ExecStart=/home/ubuntu/anaconda2/envs/chatbot/bin/uwsgi --ini myproject.ini
