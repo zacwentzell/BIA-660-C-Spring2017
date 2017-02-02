@@ -90,7 +90,7 @@ class DataFrame(object):
                 # this value in row
                 ordered_dict_data.append((self.header[index], row_value))
 
-            # outside of the inner loop (line 79)
+            # outside of the inner loop (for index, row_value in enumerate(row))
             # ordered_dict_data now contains a list of tuples
 
             # create an OrderedDict using ordered_dict_data and assign it to ordered_dict_row
