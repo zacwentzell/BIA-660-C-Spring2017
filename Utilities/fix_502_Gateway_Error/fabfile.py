@@ -11,13 +11,13 @@ def fix_502():
         sudo('service myproject stop')
         sudo('service nginx stop')
 
-        run('conda remove --name chatbot --all')
+        run('conda remove --name chatbot --all -y')
 
-        run('conda create --name chatbot python=2')
+        run('conda create --name chatbot python=2 -y')
 
         with prefix('source activate chatbot'):
             run('pip install flask uwsgi')
-            run('conda install anaconda')
+            run('conda install anaconda -y')
 
         sudo('service myproject start')
         sudo('service nginx start')
