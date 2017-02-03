@@ -1,6 +1,6 @@
 from fabric.api import *
 
-env.hosts=["ec2-52-33-51-137.us-west-2.compute.amazonaws.com"]
+env.hosts=["ec2-35-167-182-249.us-west-2.compute.amazonaws.com"]
 env.user="ubuntu"
 env.key_filename=['/home/cognizac/Downloads/Stevens-key.pem']
 YOUR_NAME_HERE='Zac'

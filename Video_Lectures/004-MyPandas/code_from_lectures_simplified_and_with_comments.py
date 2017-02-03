@@ -122,7 +122,7 @@ class DataFrame(object):
         # this is for columns only
         # if item is a string or unicode object
         elif isinstance(item, (str, unicode)):
-            return [row[item] for row in self.data]
+            return Series([row[item] for row in self.data])
 
         # this is for rows and columns
         # if item is a tuple
@@ -162,6 +162,17 @@ class DataFrame(object):
         else:
             return [row for row in self.data if row[column_name]==value]
 
+class Series(list):
+    def __init__(self, list_of_values):
+        self.data = list_of_values
+
+    def __eq__(self, other):
+        ret_list = []
+
+        for item in self.data:
+            ret_list.append(item == other)
+
+        return ret_list
 
 
 
@@ -206,4 +217,5 @@ indices = df.get_rows_where_column_has_value('Payment_Type', 'Visa', index_only=
 
 rows_way2 = df[indices, ['Product', 'Country']]
 
-2+2
+list_of_bools = df['Payment_Type'] == 'Visa'
+df_boolean_indexed = df[list_of_bools]
