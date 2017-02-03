@@ -74,11 +74,14 @@ def setup_ec2():
 
         with prefix('source activate chatbot'):
             in_chatbot = run('which pip | grep chatbot')
-            run('pip install flask uwsgi')
-            if service_installed.succeeded:
-                print '\n\n\n\nuWSGI service installed!'
-            if nginx_config_present.succeeded:
-                print '\n\n\nnginx config is present!'
+            if in_chatbot:
+                run('pip install flask uwsgi')
+                if service_installed.succeeded:
+                    print '\n\nuWSGI service installed!'
+                if nginx_config_present.succeeded:
+                    print '\n\nnginx config is present!'
+            else:
+                print '\n\nTHERE WAS A PROBLEM WITH THE CHATBOT ENV'
 
         sudo('service myproject start')
         sudo('service nginx restart')
