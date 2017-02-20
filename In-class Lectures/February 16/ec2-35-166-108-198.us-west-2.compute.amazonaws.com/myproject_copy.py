@@ -3,15 +3,16 @@ import json
 import requests
 from flask import Flask, request, Response
 from textblob import TextBlob
+# be sure to install TextBlob, see the talk_to_your_server.ipynb
 
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 #SLACK_WEBHOOK_SECRET = os.environ.get('SLACK_WEBHOOK_SECRET')
 
 slack_inbound_url = 'https://hooks.slack.com/services/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'
 
-@app.route('/slack', methods=['POST'])
+@application.route('/slack', methods=['POST'])
 def inbound():
     response = {'username': 'zac_bot', 'icon_emoji': ':robot_face:'}
     #if request.form.get('token') == SLACK_WEBHOOK_SECRET:
@@ -36,11 +37,11 @@ def inbound():
     return Response(), 200
 
 
-@app.route('/', methods=['GET'])
+@application.route('/', methods=['GET'])
 def test():
     return Response('It works!')
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=41953)
+    application.run(host='0.0.0.0', port=41953)
 
