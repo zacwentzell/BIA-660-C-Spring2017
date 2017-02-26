@@ -3,7 +3,6 @@ import json
 import requests
 
 from flask import Flask, request, Response
-from textblob import TextBlob
 
 
 application = Flask(__name__)
