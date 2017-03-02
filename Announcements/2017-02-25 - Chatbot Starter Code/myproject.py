@@ -1,6 +1,8 @@
 import os
 import json
+import random
 import requests
+import time
 
 from flask import Flask, request, Response
 
@@ -18,6 +20,11 @@ slack_inbound_url = ''
 # this handles POST requests sent to your server at SERVERIP:41953/slack
 @application.route('/slack', methods=['POST'])
 def inbound():
+    # Adding a delay so that all bots don't answer at once (could overload the API).
+    # This will randomly choose a value between 0 and 10 using a uniform distribution.
+    delay = random.uniform(0, 10)
+    time.sleep(delay)
+
     print '========POST REQUEST @ /slack========='
     response = {'username': my_bot_name, 'icon_emoji': ':robot_face:', 'text': ''}
     print 'FORM DATA RECEIVED IS:'
@@ -36,8 +43,9 @@ def inbound():
         if text == "What's your favorite color?":
         # you can use print statments to debug your code
             print 'Bot is responding to favorite color question'
-            response['text'] = 'Blue!'
+            response['text'] = 'Blue! (Waited for {}s before responding)'.format(delay)
             print 'Response text set correctly'
+            print response['text']
 
 
         if slack_inbound_url and response['text']:
