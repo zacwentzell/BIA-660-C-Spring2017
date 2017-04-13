@@ -163,13 +163,10 @@ class DataFrame(object):
             return [row for row in self.data if row[column_name]==value]
 
 class Series(list):
-    def __init__(self, list_of_values):
-        self.data = list_of_values
-
     def __eq__(self, other):
         ret_list = []
 
-        for item in self.data:
+        for item in self:
             ret_list.append(item == other)
 
         return ret_list
@@ -212,6 +209,8 @@ named_rows_and_multi_columns = df[:5, ['column4', 'column7']]
 
 #testing from_csv class method
 df = DataFrame.from_csv('SalesJan2009.csv')
+test = df['Price']
+test == 1400
 rows = df.get_rows_where_column_has_value('Payment_Type', 'Visa')
 indices = df.get_rows_where_column_has_value('Payment_Type', 'Visa', index_only=True)
 
